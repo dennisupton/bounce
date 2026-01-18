@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://cjt0xbpo7iac5"]
+
+[ext_resource type="Script" uid="uid://cyh211hlu0nlj" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://l6oql1fxvct" path="res://icon.svg" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://w61nm3ytyr5o" path="res://player.gd" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dcij87rhvlgnd" path="res://ball.tscn" id="3_lquwl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(1163, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(77, 1598)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(90, 28)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_1bvp3")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(571.5, 614.5)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Icon" type="Sprite2D" parent="Floor"]
+position = Vector2(573.5, 613.5)
+scale = Vector2(9.0703125, 0.4921876)
+texture = ExtResource("1_ig7tw")
+
+[node name="ball" parent="." instance=ExtResource("3_lquwl")]
+position = Vector2(458, 102)
+
+[node name="Floor2" type="StaticBody2D" parent="."]
+position = Vector2(-3, -648)
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
+position = Vector2(571.5, 614.5)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Icon" type="Sprite2D" parent="Floor2"]
+position = Vector2(573.5, 613.5)
+scale = Vector2(9.0703125, 0.4921876)
+texture = ExtResource("1_ig7tw")
+
+[node name="Wall" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(28.5, -153)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Icon" type="Sprite2D" parent="Wall"]
+position = Vector2(32.5, 323)
+scale = Vector2(0.6171877, 5.03125)
+texture = ExtResource("1_ig7tw")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(1082, -2)
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(29, -152)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Icon" type="Sprite2D" parent="Wall2"]
+position = Vector2(32.5, 323)
+scale = Vector2(0.6171877, 5.03125)
+texture = ExtResource("1_ig7tw")
+
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(311, 554)
+script = ExtResource("3_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="ColorRect" type="ColorRect" parent="Player"]
+offset_left = -46.0
+offset_top = -14.0
+offset_right = 46.0
+offset_bottom = 14.0
+color = Color(0.12941177, 0.46666667, 1, 1)

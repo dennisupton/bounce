@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcij87rhvlgnd"]
+
+[ext_resource type="Script" uid="uid://5krrrpcvmbcx" path="res://ball.gd" id="1_x8fbi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
+radius = 63.007935
+
+[sub_resource type="LabelSettings" id="LabelSettings_1bvp3"]
+font_size = 46
+
+[node name="ball" type="CharacterBody2D" groups=["ball"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_x8fbi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1bvp3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -58.0
+offset_top = -56.0
+offset_right = 61.0
+offset_bottom = 55.0
+color = Color(0.30923715, 0.18785807, 0.07529815, 1)
+
+[node name="Health" type="Label" parent="."]
+offset_left = -25.0
+offset_top = -34.0
+offset_right = 27.0
+offset_bottom = 30.0
+text = "20"
+label_settings = SubResource("LabelSettings_1bvp3")
