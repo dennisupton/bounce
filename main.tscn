@@ -33,10 +33,16 @@ position = Vector2(573.5, 613.5)
 scale = Vector2(9.0703125, 0.4921876)
 texture = ExtResource("1_ig7tw")
 
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+offset_left = -8.999999
+offset_top = 648.00006
+offset_right = 68.0
+offset_bottom = 1799.6963
+rotation = -1.5707964
+color = Color(0.23503968, 0.08818891, 2.8878452e-07, 1)
+
 [node name="ball" parent="." instance=ExtResource("3_lquwl")]
 position = Vector2(458, 102)
-collision_layer = 2
-collision_mask = 1
 
 [node name="Floor2" type="StaticBody2D" parent="."]
 position = Vector2(-3, -648)
@@ -51,6 +57,14 @@ position = Vector2(573.5, 613.5)
 scale = Vector2(9.0703125, 0.4921876)
 texture = ExtResource("1_ig7tw")
 
+[node name="ColorRect" type="ColorRect" parent="Floor2"]
+offset_left = -8.999999
+offset_top = 648.00006
+offset_right = 68.0
+offset_bottom = 1799.6963
+rotation = -1.5591002
+color = Color(0.23503968, 0.08818891, 2.8878452e-07, 1)
+
 [node name="Wall" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_ig7tw")
 
@@ -58,10 +72,11 @@ physics_material_override = SubResource("PhysicsMaterial_ig7tw")
 position = Vector2(28.5, -153)
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Icon" type="Sprite2D" parent="Wall"]
-position = Vector2(32.5, 323)
-scale = Vector2(0.6171877, 5.03125)
-texture = ExtResource("1_ig7tw")
+[node name="ColorRect" type="ColorRect" parent="Wall"]
+offset_left = -9.0
+offset_right = 68.0
+offset_bottom = 644.0
+color = Color(0.23503968, 0.08818891, 2.8878452e-07, 1)
 
 [node name="Wall2" type="StaticBody2D" parent="."]
 position = Vector2(1082, -2)
@@ -71,10 +86,11 @@ physics_material_override = SubResource("PhysicsMaterial_ig7tw")
 position = Vector2(29, -152)
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="Icon" type="Sprite2D" parent="Wall2"]
-position = Vector2(32.5, 323)
-scale = Vector2(0.6171877, 5.03125)
-texture = ExtResource("1_ig7tw")
+[node name="ColorRect" type="ColorRect" parent="Wall2"]
+offset_left = -9.0
+offset_right = 68.0
+offset_bottom = 644.0
+color = Color(0.23503968, 0.08818891, 2.8878452e-07, 1)
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(311, 554)

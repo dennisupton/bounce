@@ -12,3 +12,5 @@ func _process(delta: float) -> void:
 	if $RayCast2D.is_colliding() and $RayCast2D.get_collider().is_in_group("ball"):
 		$RayCast2D.get_collider().health -= 1
 		queue_free()
+	elif position.y < 0:
+		queue_free()
