@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dla5fnnptmtnu" path="res://explodeFX.gd" id="2_dc1yq"]
 
 [node name="explode" type="CPUParticles2D"]
+visible = false
 z_index = -1
 emitting = false
 amount = 50
