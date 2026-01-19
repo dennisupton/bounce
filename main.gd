@@ -31,7 +31,6 @@ func _ready() -> void:
 	"open_scene_on_close": "res://main.tscn"
 	})
 	$CanvasLayer/Leaderboard.loadLeaderboard()
-	await SilentWolf.Scores.save_score("Benji", 131)
 	#SilentWolf.Scores.wipe_leaderboard()
 var score = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.

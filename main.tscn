@@ -44,7 +44,6 @@ offset_left = 23.0
 offset_top = -479.0
 offset_right = 359.0
 offset_bottom = -346.0
-text = "999"
 label_settings = SubResource("LabelSettings_h2yge")
 
 [node name="score" type="Label" parent="."]
