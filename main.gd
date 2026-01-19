@@ -7,6 +7,8 @@ var highscore = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	highscore = load_highscore_js()
+	if highscore > 0:
+		$highscore.text = "Highscore : "+ str(highscore)
 	ball = preload("res://ball.tscn")
 	newBall()
 	
