@@ -51,9 +51,7 @@ func _process(_delta: float) -> void:
 		_on_pause_pressed()
 func restart():
 	ante = 1
-	if score > 40 and username and newHighscore:
-		SilentWolf.Scores.save_score(username, score)
-		newHighscore = false
+	var lastScore = score
 	score = 0
 	$score.text = str(score)
 	for i in get_children():
@@ -61,6 +59,15 @@ func restart():
 			i.queue_free()
 	newBall()
 	$Player.restarting = false
+	var sw_result = await SilentWolf.Scores.get_scores_by_player(username).sw_get_player_scores_complete
+	print("Got player scores: " + str(sw_result.scores))
+	print("Does player have scores? " + str(sw_result.scores.size() > 0))
+	if (not username == "") and lastScore > 35 and (sw_result.scores.size() == 0 or lastScore > sw_result.scores[0].score):
+		print("trying to save")
+		$CanvasLayer/bar/saving.show()
+		await SilentWolf.Scores.save_score(username, lastScore)
+		$CanvasLayer/bar/saving.hide()
+		newHighscore = false
 
 
 func addExplode(pos,color):

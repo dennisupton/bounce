@@ -146,7 +146,7 @@ color = Color(0.18039216, 0.18039216, 0.18039216, 1)
 
 [node name="Leaderboard" type="Panel" parent="CanvasLayer"]
 visible = false
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 309.0
@@ -237,6 +237,12 @@ offset_bottom = 98.0
 grow_horizontal = 2
 theme = ExtResource("3_lquwl")
 alignment = 2
+
+[node name="saving" type="Label" parent="CanvasLayer/bar"]
+visible = false
+layout_mode = 2
+text = "Saving"
+label_settings = SubResource("LabelSettings_272bh")
 
 [node name="remember" type="Label" parent="CanvasLayer/bar"]
 layout_mode = 2
