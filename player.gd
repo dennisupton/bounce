@@ -4,13 +4,17 @@ extends CharacterBody2D
 const SPEED = 1200.0
 const JUMP_VELOCITY = -400.0
 var bullet
+
 func _ready() -> void:
 	bullet = preload("res://bullet.tscn")
+
 var lastShoot = Time.get_ticks_msec()
+
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta/1.5
 
 	if Input.is_action_pressed("shoot") and Time.get_ticks_msec()-lastShoot > 100:
 		lastShoot = Time.get_ticks_msec()
@@ -23,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	#var direction := Input.get_axis("ui_left", "ui_right")
 	
 	var direction = 0
-	var mousePos =  get_viewport().get_mouse_position()
+	var mousePos =  get_viewport().get_mouse_position() # 
 	if Input.is_action_pressed("shoot") and abs(position.x -mousePos.x) >10:
 		
 		if mousePos.x> position.x:
@@ -37,6 +41,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
+
+var restarting = false
 func restart():
-	if get_tree():
+	if not restarting and get_tree():
+		restarting = true
 		get_tree().reload_current_scene()
