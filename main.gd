@@ -43,11 +43,14 @@ func newBall():
 	child.wait = true
 	add_child(child)
 
-func save_highscore_js(score: int):
+func save_highscore_js(s: int):
 	if OS.has_feature("web"):
 		JavaScriptBridge.eval(
-			"localStorage.setItem('highscore', '%d');" % score
+			"localStorage.setItem('highscore', '%d');" % s
 		)
+	else:
+		print("save failed")
+		$highscore.hide()
 
 func load_highscore_js() -> int:
 	if OS.has_feature("web"):
@@ -56,4 +59,7 @@ func load_highscore_js() -> int:
 		)
 		if result != null:
 			return int(result)
+	else:
+		$highscore.hide()
+	save_highscore_js(0)
 	return 0
