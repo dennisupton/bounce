@@ -1,11 +1,34 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b1vyvai5vn4ii"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b1vyvai5vn4ii"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-bg_color = Color(0.29954728, 0.2995475, 0.29954743, 1)
+bg_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvktn"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.48570347, 0.48570353, 0.4857034, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1x85"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -22,12 +45,14 @@ shadow_color = Color(0.12225228, 0.12225222, 0.12225223, 0.61960787)
 shadow_size = 130
 
 [resource]
+Button/font_sizes/font_size = 90
 Button/styles/focus = SubResource("StyleBoxFlat_h2yge")
-Button/styles/hover = SubResource("StyleBoxFlat_h2yge")
+Button/styles/hover = SubResource("StyleBoxFlat_wvktn")
 Button/styles/normal = SubResource("StyleBoxFlat_h2yge")
-Button/styles/pressed = SubResource("StyleBoxFlat_h2yge")
+Button/styles/pressed = SubResource("StyleBoxFlat_e1x85")
 HBoxContainer/constants/separation = 30
+LineEdit/font_sizes/font_size = 90
 LineEdit/styles/focus = SubResource("StyleBoxFlat_h2yge")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_h2yge")
 Panel/styles/panel = SubResource("StyleBoxFlat_0xm2m")
-VBoxContainer/constants/separation = 26
+VBoxContainer/constants/separation = 95

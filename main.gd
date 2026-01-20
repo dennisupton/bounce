@@ -61,9 +61,9 @@ func restart():
 	var sw_result = await SilentWolf.Scores.get_scores_by_player(username).sw_get_player_scores_complete
 	if (not username == "") and lastScore > 35 and (sw_result.scores.size() == 0 or lastScore > sw_result.scores[0].score):
 		print("Uploading to Leaderboard")
-		$CanvasLayer/bar/saving.show()
+		$CanvasLayer/saving.show()
 		await SilentWolf.Scores.save_score(username, lastScore)
-		$CanvasLayer/bar/saving.hide()
+		$CanvasLayer/saving.hide()
 		newHighscore = false
 
 

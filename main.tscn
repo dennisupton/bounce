@@ -33,6 +33,7 @@ size = Vector2(77, 1598)
 font_size = 36
 
 [sub_resource type="LabelSettings" id="LabelSettings_272bh"]
+font_size = 26
 shadow_size = 51
 shadow_color = Color(0, 0, 0, 0.043137256)
 
@@ -145,6 +146,7 @@ color = Color(0.18039216, 0.18039216, 0.18039216, 1)
 
 [node name="Leaderboard" type="Panel" parent="CanvasLayer"]
 visible = false
+z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -168,6 +170,7 @@ offset_right = -75.0
 offset_bottom = -268.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 
 [node name="top" type="HSplitContainer" parent="CanvasLayer/Leaderboard/VBoxContainer"]
 layout_mode = 2
@@ -185,14 +188,15 @@ horizontal_alignment = 2
 
 [node name="Pause" type="Panel" parent="CanvasLayer"]
 visible = false
+z_index = 2
 anchors_preset = -1
 anchor_top = -0.44500002
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 309.0
-offset_top = 928.64
-offset_right = -309.0
-offset_bottom = -422.0
+offset_left = 111.0
+offset_top = 624.64
+offset_right = -104.0
+offset_bottom = -85.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -205,15 +209,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 74.0
-offset_top = 77.0
-offset_right = -75.0
-offset_bottom = -120.0
+offset_left = 106.0
+offset_top = -3.0
+offset_right = -110.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Back" type="Button" parent="CanvasLayer/Pause/Container"]
 layout_mode = 2
+theme = ExtResource("3_lquwl")
 text = "Back"
 
 [node name="name" type="LineEdit" parent="CanvasLayer/Pause/Container"]
@@ -237,18 +243,14 @@ grow_horizontal = 2
 theme = ExtResource("3_lquwl")
 alignment = 2
 
-[node name="saving" type="Label" parent="CanvasLayer/bar"]
-visible = false
-layout_mode = 2
-text = "Saving"
-label_settings = SubResource("LabelSettings_272bh")
-
 [node name="remember" type="Label" parent="CanvasLayer/bar"]
+z_index = -1
 layout_mode = 2
 text = "Remember to set username to save score ->"
 label_settings = SubResource("LabelSettings_272bh")
 
 [node name="pause" type="Button" parent="CanvasLayer/bar"]
+z_index = 1
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("3_lquwl")
@@ -260,6 +262,15 @@ layout_mode = 2
 focus_mode = 0
 theme = ExtResource("3_lquwl")
 icon = ExtResource("6_272bh")
+
+[node name="saving" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 470.0
+offset_top = 28.0
+offset_right = 551.0
+offset_bottom = 64.0
+text = "Saving"
+label_settings = SubResource("LabelSettings_272bh")
 
 [connection signal="pressed" from="CanvasLayer/Pause/Container/Back" to="CanvasLayer/Pause" method="_on_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pause/Container/setName" to="." method="_on_set_name_pressed"]
