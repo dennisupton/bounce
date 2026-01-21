@@ -50,6 +50,7 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Pause"):
 		_on_pause_pressed()
+
 func restart():
 	for i in get_children():
 		if i.is_in_group("ball"):
@@ -65,8 +66,9 @@ func restart():
 		print("Uploading to Leaderboard")
 		$CanvasLayer/saving.show()
 		var scores = await SilentWolf.Scores.get_scores_by_player(username).sw_get_player_scores_complete
+		print("Got these scores for username "+ str(scores.scores))
 		for i in scores.scores:
-			SilentWolf.Scores.delete_score(i.score_id)
+			await SilentWolf.Scores.delete_score(i.score_id)
 		await SilentWolf.Scores.save_score(username, lastScore)
 		$CanvasLayer/saving.hide()
 		newHighscore = false
@@ -180,7 +182,7 @@ func _on_enter_name_pressed() -> void:
 	print(scores.scores)
 	if scores.scores.size() ==0 and highscore > 30:
 		await SilentWolf.Scores.save_score(username, highscore)
-	elif scores.scores[0] and scores.scores[0].score < highscore:
+	elif highscore > 30 and scores.scores[0] and scores.scores[0].score < highscore:
 		print("adding highscore")
 		for i in scores.scores:
 			await SilentWolf.Scores.delete_score(i.score_id)
