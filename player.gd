@@ -27,9 +27,8 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 	var direction = Input.get_axis("Left", "Right")
-	var mousePos =  get_viewport().get_mouse_position() 
+	var mousePos =  get_viewport().get_canvas_transform().affine_inverse() * get_viewport().get_mouse_position()
 	if Input.is_action_pressed("mouseLeft") and abs(position.x -mousePos.x) >10 and Engine.time_scale == 1 and !freeze:
-		
 		if mousePos.x> position.x:
 			direction = 1
 		else:
