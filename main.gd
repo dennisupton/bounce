@@ -37,7 +37,7 @@ var score = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	$CanvasLayer/bar/remember.visible = username == ""
-	if empty():
+	if empty() and !$Player.freeze:
 		dir *= -1
 		ante *= 2
 		newBall()
@@ -50,13 +50,17 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		_on_pause_pressed()
 func restart():
+	$Player.freeze = true
+	$CanvasLayer/transition/anim.play("Death")
+	for i in get_children():
+		if i.is_in_group("ball"):
+			i.queue_free()
+	await get_tree().create_timer(0.5).timeout
+	$CanvasLayer/transition/anim.play("RESET")
 	ante = 1
 	var lastScore = score
 	score = 0
 	$score.text = str(score)
-	for i in get_children():
-		if i.is_in_group("ball"):
-			i.queue_free()
 	newBall()
 	$Player.restarting = false
 	var sw_result = await SilentWolf.Scores.get_scores_by_player(username).sw_get_player_scores_complete
@@ -66,7 +70,7 @@ func restart():
 		await SilentWolf.Scores.save_score(username, lastScore)
 		$CanvasLayer/saving.hide()
 		newHighscore = false
-
+	$Player.freeze = false
 
 func addExplode(pos,color):
 	var child = explodeFX.instantiate()
@@ -170,3 +174,8 @@ func _on_enter_name_pressed() -> void:
 	print("new username")
 	username = $CanvasLayer/Pause/Container/username/name.text
 	save_name_js(username)
+	$CanvasLayer/Pause.visible = not $CanvasLayer/Pause.visible
+	if $CanvasLayer/Pause.visible:
+		Engine.time_scale = 0
+	else:
+		Engine.time_scale = 1
