@@ -219,6 +219,7 @@ label_settings = SubResource("LabelSettings_x1gaq")
 horizontal_alignment = 2
 
 [node name="Pause" type="Panel" parent="CanvasLayer"]
+visible = false
 z_index = 2
 anchors_preset = -1
 anchor_left = 0.5
