@@ -61,13 +61,12 @@ func restart():
 	$score.text = str(score)
 	newBall()
 	$Player.restarting = false
-	var sw_result = await SilentWolf.Scores.get_scores_by_player(username).sw_get_player_scores_complete
+	var sw_result = await SilentWolf.Scores.get_scores_by_player(username,99).sw_get_player_scores_complete
 	if (not username == "") and lastScore > 35 and (sw_result.scores.size() == 0 or lastScore > sw_result.scores[0].score):
-		print("Uploading to Leaderboard")
+		print("Uploading to Leaderboard",username)
 		$CanvasLayer/saving.show()
-		var scores = await SilentWolf.Scores.get_scores_by_player(username).sw_get_player_scores_complete
-		print("Got these scores for username "+ str(scores.scores))
-		for i in scores.scores:
+		print("Got these scores for username "+ str(sw_result.scores))
+		for i in sw_result.scores:
 			await SilentWolf.Scores.delete_score(i.score_id)
 		await SilentWolf.Scores.save_score(username, lastScore)
 		$CanvasLayer/saving.hide()
